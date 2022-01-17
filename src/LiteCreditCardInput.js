@@ -83,7 +83,7 @@ export default class LiteCreditCardInput extends Component {
 
   static defaultProps = {
     placeholders: {
-      number: "1234 5678 1234 5678",
+      number: "XXXX XXXX XXXX XXXXX",
       expiry: "MM/YY",
       cvc: "CVC",
     },
@@ -146,18 +146,18 @@ export default class LiteCreditCardInput extends Component {
       <View style={s.container}>
         <View style={[
           s.leftPart,
-          showRightPart ? s.hidden : s.expanded,
+          s.expanded,
         ]}>
           <CCInput {...this._inputProps("number")}
             keyboardType="numeric"
             containerStyle={s.numberInput} />
         </View>
-        <TouchableOpacity onPress={showRightPart ? this._focusNumber : this._focusExpiry }>
+        <TouchableOpacity>
           <Image style={s.icon} source={Icons[this._iconToShow()]} />
         </TouchableOpacity>
         <View style={[
           s.rightPart,
-          showRightPart ? s.expanded : s.hidden,
+          s.hidden,
         ]}>
           <TouchableOpacity onPress={this._focusNumber}
             style={s.last4}>
