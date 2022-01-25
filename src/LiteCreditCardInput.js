@@ -114,6 +114,7 @@ export default class LiteCreditCardInput extends Component {
       placeholders, values, status,
       onFocus, onChange, onBecomeEmpty, onBecomeValid,
       additionalInputsProps,
+      onFocusChange
     } = this.props;
 
     return {
@@ -125,7 +126,7 @@ export default class LiteCreditCardInput extends Component {
       value: values[field],
       status: status[field],
 
-      onFocus, onChange, onBecomeEmpty, onBecomeValid,
+      onFocus, onChange, onBecomeEmpty, onBecomeValid, onFocusChange,
       additionalInputProps: additionalInputsProps[field],
     };
   };
