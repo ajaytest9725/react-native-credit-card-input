@@ -32,6 +32,7 @@ export default class CCInput extends Component {
     invalidColor: PropTypes.string,
     placeholderColor: PropTypes.string,
 
+    onFocusChange:PropTypes.func,
     onFocus: PropTypes.func,
     onChange: PropTypes.func,
     onBecomeEmpty: PropTypes.func,
@@ -51,6 +52,7 @@ export default class CCInput extends Component {
     onBecomeEmpty: () => {},
     onBecomeValid: () => {},
     additionalInputProps: {},
+    onFocusChange:()=>{}
   };
 
   componentWillReceiveProps = newProps => {
@@ -65,7 +67,7 @@ export default class CCInput extends Component {
 
   _onFocus = () => this.props.onFocus(this.props.field);
   _onChange = value => this.props.onChange(this.props.field, value);
-
+  _onFocusChange=()=>this.props.onFocusChange()
   render() {
     const { label, value, placeholder, status, keyboardType,
             containerStyle, inputStyle, labelStyle,
@@ -88,6 +90,8 @@ export default class CCInput extends Component {
               (invalidColor && status === "invalid") ? { color: invalidColor } :
               {}),
             ]}
+            onBlur={this._onFocusChange}
+            // maxLength={16}
             underlineColorAndroid={"transparent"}
             placeholderTextColor={placeholderColor}
             placeholder={placeholder}
